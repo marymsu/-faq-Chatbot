@@ -1,0 +1,54 @@
+[
+  {
+    "input": "hello hi hey",
+    "response": "Hi there!"
+  },
+  {
+    "input": "bye goodbye",
+    "response": "Goodbye!"
+  },
+  {
+    "input": "tables table stands price cost",
+    "response": "Table stands go for as low as 10,000 to 20,000!"
+  },
+  {
+    "input": "chairs chair price cost",
+    "response": "Chairs are going for 5,000 to 10,000 depending on the quality."
+  },
+  {
+    "input": "discounts discount sale promo promotion",
+    "response": "Yes, we have a 10% discount for bulk purchases."
+  },
+  {
+    "input": "colors color available",
+    "response": "Sure! We have black, white, and brown for the table stands, and the chairs come in black, white, and red."
+  },
+  {
+    "input": "return policy returns refund",
+    "response": "We offer a 30-day return policy for any defective products. Please keep the receipt for returns."
+  },
+  {
+    "input": "delivery deliver shipping",
+    "response": "Yes, we offer delivery services for an additional fee based on your location. Please provide your address for a quote."
+  },
+  {
+    "input": "customize customization design",
+    "response": "Yes, we offer customization options for the table stands. You can choose the size, color, and material. Please contact our customer service for more details."
+  },
+  {
+    "input": "payment pay methods options",
+    "response": "We accept cash, credit/debit cards, and mobile payments. You can choose the payment method that is most convenient for you."
+  },
+  {
+    "input": "warranty guarantee",
+    "response": "Yes, we offer a 1-year warranty on all our products. If you encounter any issues within the warranty period, please contact us for assistance."
+  },
+  {
+    "input": "quote bulk order purchase",
+    "response": "Certainly! Please provide the quantity and specifications of the products you are interested in, and we will provide you with a quote as soon as possible."
+  },
+  {
+    "input": "buy purchase order",
+    "response": "Great! We have table stands and chairs available. Would you like to know more about pricing or customization options?"
+  }
+]
