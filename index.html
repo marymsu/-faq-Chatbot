@@ -1,13 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Chatbot - Redirect</title>
+    <title>Chatbot</title>
+    <style>
+        body { font-family: Arial; }
+        #chat { width: 400px; height: 400px; border: 1px solid #ccc; overflow-y: scroll; padding: 10px; }
+        #message { width: 300px; }
+    </style>
 </head>
 <body>
+    <h2>Chatbot</h2>
+    <div id="chat"></div>
+    <input type="text" id="message" placeholder="Type here...">
+    <button onclick="sendMessage()">Send</button>
+
     <script>
-        // Redirect to the Flask app
-        window.location.href = "http://localhost:5000/";
+        function sendMessage() {
+            const message = document.getElementById("message").value.trim();
+            if (!message) return;
+
+            const chat = document.getElementById("chat");
+            const messageDiv = document.createElement("div");
+            messageDiv.innerHTML = `<div style="margin: 10px 0; padding: 5px; background: #e3f2fd; border-radius: 5px;"><b>You:</b> ${message}</div>`;
+            chat.appendChild(messageDiv);
+            chat.scrollTop = chat.scrollHeight;
+
+            document.getElementById("message").value = "";
+
+            fetch("/get_response", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Server error: " + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const botDiv = document.createElement("div");
+                botDiv.innerHTML = `<div style="margin: 10px 0; padding: 5px; background: #f3e5f5; border-radius: 5px;"><b>Bot:</b> ${data.response}</div>`;
+                chat.appendChild(botDiv);
+                chat.scrollTop = chat.scrollHeight;
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                const errorDiv = document.createElement("div");
+                errorDiv.innerHTML = `<div style="margin: 10px 0; padding: 5px; background: #ffebee; border-radius: 5px; color: red;"><b>Error:</b> ${error.message}</div>`;
+                chat.appendChild(errorDiv);
+                chat.scrollTop = chat.scrollHeight;
+            });
+        }
+
+        // Allow Enter key to send message
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("message").addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    sendMessage();
+                }
+            });
+        });
     </script>
-    <p>Loading chatbot... If not redirected, <a href="http://localhost:5000/">click here</a></p>
 </body>
 </html>
