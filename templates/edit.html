@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Response</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial; padding: 20px; background: #f4f4f4; }
+        form { background: white; padding: 20px; border-radius: 8px; }
+        input, textarea { width: 100%; padding: 8px; margin-bottom: 15px; }
+        button { padding: 10px 15px; background: #075e54; color: white; border: none; }
+    </style>
+</head>
+<body>
+
+<h2>Edit Entry</h2>
+
+<form method="POST" action="/update/{{ data[0] }}">
+    <label>Keywords</label>
+    <input type="text" name="keywords" value="{{ data[1] }}" required>
+
+    <label>Response</label>
+    <textarea name="response" required>{{ data[2] }}</textarea>
+
+    <button type="submit">Update</button>
+</form>
+
+</body>
+</html>
